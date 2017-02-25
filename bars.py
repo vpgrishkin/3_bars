@@ -10,23 +10,21 @@ DEFAULT_FILE_NAME = 'default.json'
 def load_data(file_path):
     
     try:
-        file = open(file_path, 'r', encoding='windows-1251')
+        json_file = open(file_path, 'r', encoding='windows-1251')
     except Exception:
         print(u'Не удалось открыть файл')
         sys.exit(1)
 
     try:
-        json_data = file.read()
+        json_data = json_file.read()
     except Exception:
         print('Ошибка. Не удалось загрузить файл.')
     else:
         print('Загружен файл {}'.format(file_path))
     finally:
-        file.close()
+        json_file.close()
 
-    data = None
-    data = json.loads(json_data)
-    return data
+    return json.loads(json_data)
 
 
 def get_biggest_bar(data):
