@@ -13,23 +13,6 @@ def load_data(file_path, file_encoding):
         parsed_string = json.loads(json_string)
         return parsed_string
 
-    # try:
-    #     json_file = open(file_path, 'r', encoding=DEFAULT_FILE_ENCODING)
-    # except Exception:
-    #     print('Не удалось открыть файл')
-    #     sys.exit(1)
-
-    # try:
-    #     json_data = json_file.read()
-    # except Exception:
-    #     print('Ошибка. Не удалось загрузить файл.')
-    # else:
-    #     print('Загружен файл {}'.format(file_path))
-    # finally:
-    #     json_file.close()
-
-    # return json.loads(json_data)
-
 
 def get_biggest_bar(data):
     biggest_bar = max(data, key=lambda x: x['SeatsCount'])
@@ -42,7 +25,6 @@ def get_smallest_bar(data):
 
 
 def get_closest_bar(data, longitude, latitude):
-    # for perfectionists https://pypi.python.org/pypi/haversine
     get_closest_bar = min(data, key=lambda x: hypot(float(x['Longitude_WGS84']) - longitude, float(x['Latitude_WGS84']) - latitude))
     return get_closest_bar
 
